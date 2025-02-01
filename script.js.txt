@@ -1,0 +1,20 @@
+function submitQuiz() {
+    const activity = document.querySelector('input[name="activity"]:checked');
+    if (!activity) {
+        alert("Please select an activity!");
+        return;
+    }
+    let result = '';
+    switch (activity.value) {
+        case 'sleep':
+            result = 'Your cat is relaxed and loves to sleep!';
+            break;
+        case 'play':
+            result = 'Your cat is playful and loves to be active!';
+            break;
+        case 'outdoor':
+            result = 'Your cat loves adventure and outdoor activities!';
+            break;
+    }
+    alert(result);
+}

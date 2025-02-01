@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz - Cat Personality Test</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <h2>What does your cat love to do?</h2>
+    <form id="quizForm">
+        <input type="radio" id="sleep" name="activity" value="sleep">
+        <label for="sleep">Sleep</label><br>
+        <input type="radio" id="play" name="activity" value="play">
+        <label for="play">Play</label><br>
+        <input type="radio" id="outdoor" name="activity" value="outdoor">
+        <label for="outdoor">Outdoor</label><br>
+        <button type="button" onclick="submitQuiz()">Submit</button>
+    </form>
+    <script src="script.js"></script>
+</body>
+</html>
