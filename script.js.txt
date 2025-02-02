@@ -1,55 +1,42 @@
-const questions = [
-    { 
-        question: "คุณชอบทำอะไรเวลาว่าง?", 
-        choices: ["นอนเล่น", "สำรวจสิ่งใหม่ๆ", "อยู่เงียบๆ คนเดียว", "เข้าสังคม"]
-    },
-    { 
-        question: "คุณคิดว่าตัวเองเป็นคนแบบไหน?", 
-        choices: ["ขี้อ้อน", "ฉลาด", "สุขุม", "ร่าเริง"]
-    }
-];
-
-let currentQuestion = 0;
-let answers = [];
-
-function showQuestion() {
-    const questionElem = document.getElementById("question");
-    const choicesElem = document.getElementById("choices");
-    
-    questionElem.innerText = questions[currentQuestion].question;
-    choicesElem.innerHTML = "";
-
-    questions[currentQuestion].choices.forEach((choice, index) => {
-        const button = document.createElement("button");
-        button.innerText = choice;
-        button.classList.add("btn");
-        button.onclick = () => {
-            answers.push(choice);
-            nextQuestion();
-        };
-        choicesElem.appendChild(button);
-    });
-}
-
-function nextQuestion() {
-    if (currentQuestion < questions.length - 1) {
-        currentQuestion++;
-        showQuestion();
-    } else {
-        calculateResult();
-    }
-}
-
 function calculateResult() {
-    let result = "Scottish Fold"; // ค่าเริ่มต้น
-    if (answers.includes("ฉลาด")) {
-        result = "Bengal";
-    } else if (answers.includes("สุขุม")) {
-        result = "British Shorthair";
+    let answers = document.querySelectorAll('input[type="radio"]:checked');
+
+    if (answers.length < 7) {
+        alert("กรุณาตอบทุกข้อก่อนดูผลลัพธ์!");
+        return;
     }
-    
-    localStorage.setItem("catResult", result);
+
+    let score = { a: 0, b: 0, c: 0 };
+
+    answers.forEach((answer) => {
+        score[answer.value]++;
+    });
+
+    let resultText = "";
+    let resultImage = "";
+
+    if (score.a >= 5) {
+        resultText = "คุณเป็นแมวขี้อาย 🏡";
+        resultImage = "shy-cat.png";
+    } else if (score.b >= 5) {
+        resultText = "คุณเป็นแมวขี้เล่น 😸";
+        resultImage = "playful-cat.png";
+    } else {
+        resultText = "คุณเป็นแมวสุดเท่ 😼";
+        resultImage = "cool-cat.png";
+    }
+
+    localStorage.setItem("resultText", resultText);
+    localStorage.setItem("resultImage", resultImage);
     window.location.href = "result.html";
 }
+
+// โหลดผลลัพธ์จาก LocalStorage
+window.onload = function() {
+    if (window.location.pathname.includes("result.html")) {
+        document.getElementById("result-text").textContent = localStorage.getItem("resultText");
+        document.getElementById("result-image").src = localStorage.getItem("resultImage");
+    }
+};
 
 document.addEventListener("DOMContentLoaded", showQuestion);
