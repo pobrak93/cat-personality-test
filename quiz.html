@@ -3,24 +3,38 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ผลลัพธ์ของคุณ</title>
+    <title>แบบสอบถามบุคลิกภาพ</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div class="result-container">
-        <h1>ผลลัพธ์ของคุณ 🐾</h1>
-        <p id="resultText"></p>
-        <img id="resultImage" src="" alt="ผลลัพธ์ของคุณ">
-        <a href="index.html" class="home-button">กลับไปหน้าแรก</a>
+    <div class="quiz-container">
+        <h1>แบบสอบถามบุคลิกภาพของคุณ 🐾</h1>
+        <form id="quizForm">
+            <!-- ตัวอย่างคำถาม -->
+            <label>คุณชอบทำอะไรในเวลาว่าง?</label>
+            <select name="hobby" required>
+                <option value="นอนหลับ">นอนหลับ</option>
+                <option value="เล่นของเล่น">เล่นของเล่น</option>
+                <option value="กินอาหารอร่อย">กินอาหารอร่อย</option>
+            </select>
+            <br>
+            <button type="button" onclick="submitQuiz()">ส่งคำตอบ</button>
+        </form>
     </div>
-    <script>
-        // ดึงข้อมูลผลลัพธ์จาก Local Storage
-        const resultText = localStorage.getItem("resultText");
-        const resultImage = localStorage.getItem("resultImage");
 
-        // แสดงผลลัพธ์บนหน้าเว็บ
-        document.getElementById("resultText").textContent = resultText;
-        document.getElementById("resultImage").src = resultImage;
+    <script>
+        function submitQuiz() {
+            // ประมวลผลคำตอบจากแบบสอบถาม
+            const resultText = "คุณเป็นแมวขี้อ้อนที่น่ารักที่สุด!";
+            const resultImage = "images/cute-cat.png"; // ตรวจสอบว่ารูปภาพอยู่ในโฟลเดอร์ images
+
+            // บันทึกผลลัพธ์ลง Local Storage
+            localStorage.setItem("resultText", resultText);
+            localStorage.setItem("resultImage", resultImage);
+
+            // ไปที่หน้าผลลัพธ์
+            window.location.href = "result.html";
+        }
     </script>
 </body>
 </html>
