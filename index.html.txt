@@ -4,13 +4,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cat Personality Test</title>
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <div class="container">
-        <h1>🐱 คุณเป็นแมวพันธุ์อะไร? 🐾</h1>
-        <p>ลองทำแบบทดสอบเพื่อค้นหาว่าคุณเหมือนแมวพันธุ์ไหนที่สุด!</p>
-        <a href="quiz.html" class="btn">เริ่มทำแบบทดสอบ</a>
+        <h1>🐱 แบบทดสอบบุคลิกภาพของคุณกับแมว 🐾</h1>
+        <img src="cat-cartoon.png" alt="แมวการ์ตูนน่ารัก">
+        <p>มาดูกันว่าคุณมีบุคลิกแบบแมวตัวไหนกันนะ?</p>
+        <a href="quiz.html" class="start-button">เริ่มทำแบบทดสอบ</a>
     </div>
 </body>
 </html>
