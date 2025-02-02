@@ -1,31 +1,55 @@
-<!DOCTYPE html>
-<html lang="th">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ผลลัพธ์ของคุณ</title>
-    <link rel="stylesheet" href="styles.css">
-</head>
-<body>
-    <div class="container">
-        <h1>🐾 คุณคือแมวพันธุ์...</h1>
-        <img id="cat-image" src="" alt="แมวของคุณ">
-        <p id="result-text"></p>
-        <a href="quiz.html" class="btn">ลองใหม่อีกครั้ง</a>
-    </div>
-    <script>
-        // ดึงข้อมูลจาก Local Storage
-        const result = localStorage.getItem("catResult");
-        const resultText = document.getElementById("result-text");
-        const catImage = document.getElementById("cat-image");
+const questions = [
+    { 
+        question: "คุณชอบทำอะไรเวลาว่าง?", 
+        choices: ["นอนเล่น", "สำรวจสิ่งใหม่ๆ", "อยู่เงียบๆ คนเดียว", "เข้าสังคม"]
+    },
+    { 
+        question: "คุณคิดว่าตัวเองเป็นคนแบบไหน?", 
+        choices: ["ขี้อ้อน", "ฉลาด", "สุขุม", "ร่าเริง"]
+    }
+];
 
-        if (result === "Scottish Fold") {
-            resultText.innerText = "คุณเป็น Scottish Fold! น่ารัก อ้อนเก่ง แต่ก็รักอิสระ!";
-            catImage.src = "images/scottish_fold.jpg";
-        } else if (result === "Bengal") {
-            resultText.innerText = "คุณเป็น Bengal! ฉลาด ซน และชอบการผจญภัย!";
-            catImage.src = "images/bengal.jpg";
-        }
-    </script>
-</body>
-</html>
+let currentQuestion = 0;
+let answers = [];
+
+function showQuestion() {
+    const questionElem = document.getElementById("question");
+    const choicesElem = document.getElementById("choices");
+    
+    questionElem.innerText = questions[currentQuestion].question;
+    choicesElem.innerHTML = "";
+
+    questions[currentQuestion].choices.forEach((choice, index) => {
+        const button = document.createElement("button");
+        button.innerText = choice;
+        button.classList.add("btn");
+        button.onclick = () => {
+            answers.push(choice);
+            nextQuestion();
+        };
+        choicesElem.appendChild(button);
+    });
+}
+
+function nextQuestion() {
+    if (currentQuestion < questions.length - 1) {
+        currentQuestion++;
+        showQuestion();
+    } else {
+        calculateResult();
+    }
+}
+
+function calculateResult() {
+    let result = "Scottish Fold"; // ค่าเริ่มต้น
+    if (answers.includes("ฉลาด")) {
+        result = "Bengal";
+    } else if (answers.includes("สุขุม")) {
+        result = "British Shorthair";
+    }
+    
+    localStorage.setItem("catResult", result);
+    window.location.href = "result.html";
+}
+
+document.addEventListener("DOMContentLoaded", showQuestion);
