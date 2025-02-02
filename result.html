@@ -3,24 +3,34 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ผลลัพธ์ของคุณ</title>
+    <title>ผลลัพธ์แบบสอบถาม</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <div class="result-container">
-        <h1>ผลลัพธ์ของคุณ 🐾</h1>
-        <p id="resultText"></p>
-        <img id="resultImage" src="" alt="ผลลัพธ์ของคุณ">
-        <a href="index.html" class="home-button">กลับไปหน้าแรก</a>
+        <h1>ผลลัพธ์ของคุณ!</h1>
+        <div id="resultText"></div>
+        <img id="resultImage" src="" alt="ผลลัพธ์" />
+        <br>
+        <button onclick="goBack()">กลับไปทำแบบสอบถามอีกครั้ง</button>
     </div>
-    <script>
-        // ดึงข้อมูลผลลัพธ์จาก Local Storage
-        const resultText = localStorage.getItem("resultText");
-        const resultImage = localStorage.getItem("resultImage");
 
-        // แสดงผลลัพธ์บนหน้าเว็บ
-        document.getElementById("resultText").textContent = resultText;
-        document.getElementById("resultImage").src = resultImage;
+    <script>
+        window.onload = function() {
+            // นำข้อมูลจาก Local Storage มาแสดง
+            const resultText = localStorage.getItem("resultText");
+            const resultImage = localStorage.getItem("resultImage");
+
+            // แสดงผลลัพธ์
+            document.getElementById("resultText").textContent = resultText;
+            document.getElementById("resultImage").src = resultImage;
+        }
+
+        function goBack() {
+            // ลบข้อมูลจาก Local Storage และกลับไปยังหน้าหลัก
+            localStorage.clear();
+            window.location.href = "index.html"; // เปลี่ยนไปที่หน้า index.html ของคุณ
+        }
     </script>
 </body>
 </html>
