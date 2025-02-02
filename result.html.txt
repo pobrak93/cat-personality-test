@@ -3,29 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ผลลัพธ์ของคุณ</title>
-    <link rel="stylesheet" href="styles.css">
+    <title>ผลลัพธ์</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <div class="container">
-        <h1>🐾 คุณคือแมวพันธุ์...</h1>
-        <img id="cat-image" src="" alt="แมวของคุณ">
-        <p id="result-text"></p>
-        <a href="quiz.html" class="btn">ลองใหม่อีกครั้ง</a>
+        <h1>🔮 ผลลัพธ์ของคุณคือ...</h1>
+        <p id="result-text">คุณเป็นแมวแบบไหนกันนะ? 🤔</p>
+        <img id="result-image" src="default-cat.png" alt="ผลลัพธ์แมว">
+        <a href="index.html" class="start-button">กลับไปหน้าแรก</a>
     </div>
-    <script>
-        // ดึงข้อมูลจาก Local Storage
-        const result = localStorage.getItem("catResult");
-        const resultText = document.getElementById("result-text");
-        const catImage = document.getElementById("cat-image");
-
-        if (result === "Scottish Fold") {
-            resultText.innerText = "คุณเป็น Scottish Fold! น่ารัก อ้อนเก่ง แต่ก็รักอิสระ!";
-            catImage.src = "images/scottish_fold.jpg";
-        } else if (result === "Bengal") {
-            resultText.innerText = "คุณเป็น Bengal! ฉลาด ซน และชอบการผจญภัย!";
-            catImage.src = "images/bengal.jpg";
-        }
-    </script>
+    <script src="script.js"></script>
 </body>
 </html>
