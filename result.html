@@ -3,16 +3,24 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ผลลัพธ์</title>
+    <title>ผลลัพธ์ของคุณ</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div class="container">
-        <h1>🔮 ผลลัพธ์ของคุณคือ...</h1>
-        <p id="result-text">คุณเป็นแมวแบบไหนกันนะ? 🤔</p>
-        <img id="result-image" src="default-cat.png" alt="ผลลัพธ์แมว">
-        <a href="index.html" class="start-button">กลับไปหน้าแรก</a>
+    <div class="result-container">
+        <h1>ผลลัพธ์ของคุณ 🐾</h1>
+        <p id="resultText"></p>
+        <img id="resultImage" src="" alt="ผลลัพธ์ของคุณ">
+        <a href="index.html" class="home-button">กลับไปหน้าแรก</a>
     </div>
-    <script src="script.js"></script>
+    <script>
+        // ดึงข้อมูลผลลัพธ์จาก Local Storage
+        const resultText = localStorage.getItem("resultText");
+        const resultImage = localStorage.getItem("resultImage");
+
+        // แสดงผลลัพธ์บนหน้าเว็บ
+        document.getElementById("resultText").textContent = resultText;
+        document.getElementById("resultImage").src = resultImage;
+    </script>
 </body>
 </html>
