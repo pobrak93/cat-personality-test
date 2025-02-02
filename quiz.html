@@ -1,38 +1,26 @@
-<form id="quizForm">
-    <p>1. คุณชอบใช้เวลาว่างทำอะไร?</p>
-    <label><input type="radio" name="q1" value="a"> นอนพักผ่อน 💤</label>
-    <label><input type="radio" name="q1" value="b"> ออกไปเล่นข้างนอก 🏃</label>
-    <label><input type="radio" name="q1" value="c"> ดูหนังหรือเล่นเกม 🎮</label>
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ผลลัพธ์ของคุณ</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="result-container">
+        <h1>ผลลัพธ์ของคุณ 🐾</h1>
+        <p id="resultText"></p>
+        <img id="resultImage" src="" alt="ผลลัพธ์ของคุณ">
+        <a href="index.html" class="home-button">กลับไปหน้าแรก</a>
+    </div>
+    <script>
+        // ดึงข้อมูลผลลัพธ์จาก Local Storage
+        const resultText = localStorage.getItem("resultText");
+        const resultImage = localStorage.getItem("resultImage");
 
-    <p>2. คุณเป็นคนแบบไหนเมื่อเจอคนแปลกหน้า?</p>
-    <label><input type="radio" name="q2" value="a"> ขี้อายและระวังตัว 🏠</label>
-    <label><input type="radio" name="q2" value="b"> เข้ากับคนง่าย 😺</label>
-    <label><input type="radio" name="q2" value="c"> ไม่สนใจเป็นพิเศษ 😼</label>
-
-    <p>3. ถ้าเลือกอาหารได้ คุณจะเลือกอะไร?</p>
-    <label><input type="radio" name="q3" value="a"> อาหารสุขภาพ 🥗</label>
-    <label><input type="radio" name="q3" value="b"> ขนมหรือของหวาน 🍩</label>
-    <label><input type="radio" name="q3" value="c"> อะไรก็ได้ที่อร่อย 🍕</label>
-
-    <p>4. เมื่อคุณอยู่ในสถานที่ใหม่ คุณจะทำอย่างไร?</p>
-    <label><input type="radio" name="q4" value="a"> สำรวจอย่างระมัดระวัง 🔍</label>
-    <label><input type="radio" name="q4" value="b"> เข้าหาคนแปลกหน้าและทำความรู้จัก 🤝</label>
-    <label><input type="radio" name="q4" value="c"> นั่งเฉยๆ รอดูสถานการณ์ก่อน 😐</label>
-
-    <p>5. ถ้ามีของเล่นชิ้นใหม่ คุณจะทำอย่างไร?</p>
-    <label><input type="radio" name="q5" value="a"> เล่นทันทีด้วยความตื่นเต้น 🎾</label>
-    <label><input type="radio" name="q5" value="b"> ดูก่อนว่าใช้งานยังไง แล้วค่อยลอง 🧐</label>
-    <label><input type="radio" name="q5" value="c"> ไม่สนใจและกลับไปทำสิ่งที่เคยทำ 😑</label>
-
-    <p>6. ถ้ามีเสียงดังเกิดขึ้นกะทันหัน คุณจะ?</p>
-    <label><input type="radio" name="q6" value="a"> ตกใจแล้ววิ่งหนี 🏃</label>
-    <label><input type="radio" name="q6" value="b"> หันไปดูว่าเกิดอะไรขึ้น 👀</label>
-    <label><input type="radio" name="q6" value="c"> ไม่สนใจและทำสิ่งที่กำลังทำต่อไป 😌</label>
-
-    <p>7. ถ้าคุณสามารถเลือกที่อยู่อาศัยได้ คุณจะเลือกแบบไหน?</p>
-    <label><input type="radio" name="q7" value="a"> บ้านที่เงียบสงบ 🏡</label>
-    <label><input type="radio" name="q7" value="b"> เมืองที่เต็มไปด้วยชีวิตชีวา 🌆</label>
-    <label><input type="radio" name="q7" value="c"> ที่ไหนก็ได้ ตราบใดที่มีคนที่ฉันรัก 💖</label>
-
-    <button type="button" onclick="calculateResult()">ดูผลลัพธ์</button>
-</form>
+        // แสดงผลลัพธ์บนหน้าเว็บ
+        document.getElementById("resultText").textContent = resultText;
+        document.getElementById("resultImage").src = resultImage;
+    </script>
+</body>
+</html>
